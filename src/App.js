@@ -12,7 +12,6 @@ function App() {
 
   return (
     <div className="App">
-      start
       <button onClick={onToggleButton}>Toggle</button>
     </div>
   );
