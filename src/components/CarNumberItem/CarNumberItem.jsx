@@ -3,11 +3,11 @@ import './CarNumberItem.css';
 import Button from '../Button/Button';
 const CarNumberItem = ({ numberTemplate, className, onAdd, onDel }) => {
     const onAddHandler = () => {
-        onAdd(product);
+        onAdd(numberTemplate);
     }
 
     const onDelHandler = () => {
-        onDel(product);
+        onDel(numberTemplate);
     }
     return (
         <div className={'numbers' + className}>

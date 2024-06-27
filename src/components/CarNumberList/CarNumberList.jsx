@@ -14,6 +14,15 @@ const numberTemplates = [
 
 const CarNumberList = () => {
 
+    const onAdd = (numberTemplate) => {
+        return 1;
+    }
+
+    const onDel = (numberTemplate) => {
+        return 1;
+    }
+
+
     return (
         <div className={'list'}>
             {numberTemplates.map(item => {
