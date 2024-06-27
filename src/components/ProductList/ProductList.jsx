@@ -68,6 +68,7 @@ const ProductList = () => {
 
     return (
         <div className={'list'}>
+            <h1>Закажите услугу у проверенных партнеров нашего поселка</h1>
             {products.map(item => {
                 return (
                     <ProductItem
