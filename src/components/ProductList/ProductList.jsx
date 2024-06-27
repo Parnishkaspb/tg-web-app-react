@@ -4,14 +4,12 @@ import ProductItem from '../ProductItem/ProductItem'
 import { useTelegram } from '../../hooks/useTelegram';
 
 const products = [
-    { id: 1, title: 'Куртка 1', price: 12000, description: 'Стиль!' },
-    { id: 2, title: 'Куртка 2', price: 13000, description: 'Стиль2' },
-    { id: 3, title: 'Куртка 3', price: 14000, description: 'Стиль3' },
-    { id: 4, title: 'Куртка 4', price: 15000, description: 'Стиль4' },
-    { id: 5, title: 'Джинсы 1', price: 1000, description: 'Стиль1' },
-    { id: 6, title: 'Джинсы 2', price: 1200, description: 'Стиль2' },
-    { id: 7, title: 'Джинсы 3', price: 1300, description: 'Стиль3' },
-    { id: 8, title: 'Джинсы 4', price: 1400, description: 'Стиль4' },
+    { id: 1, title: 'Стрижка газона', price: 12000, description: 'Стиль!' },
+    { id: 2, title: 'Строительство забора', price: 13000, description: 'Стиль2' },
+    { id: 3, title: 'Ландшафтный дизайн', price: 14000, description: 'Стиль3' },
+    { id: 4, title: 'Подсветка территории', price: 15000, description: 'Стиль4' },
+    { id: 5, title: 'Строительство дома', price: 1000, description: 'Стиль1' },
+    { id: 6, title: 'Осушение участка', price: 1200, description: 'Стиль2' },
 ];
 
 const getTotalPrice = (items = []) => {

@@ -21,6 +21,7 @@ function App() {
       <Routes>
         <Route index element={<ProductList />} />
         <Route path={'form'} element={<Form />} />
+        <Route path={'all_number_template'} element={<Form />} />
       </Routes>
     </div>
   );

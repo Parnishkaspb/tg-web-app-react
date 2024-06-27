@@ -1,0 +1,11 @@
+.numbers {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    padding: 15px;
+    width: 170px;
+}
+
+.add-btn {
+    width: 50%;
+}
