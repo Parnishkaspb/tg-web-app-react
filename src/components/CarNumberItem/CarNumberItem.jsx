@@ -10,7 +10,7 @@ const CarNumberItem = ({ numberTemplate, className, onAdd, onDel }) => {
         onDel(numberTemplate);
     }
     return (
-        <div className={'numbers' + className}>
+        <div className={'numbers ' + className}>
             <div className={'number'}>{numberTemplate.number}</div>
             <div className={'timeToEnd'}>
                 <span>
