@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import './Form.css';
+import './FormNumberTemlate.css';
 import { useTelegram } from '../../hooks/useTelegram';
-const Form = () => {
+const FormNumberTemlate = () => {
     const [country, setCountry] = useState('');
     const [street, setStreet] = useState('');
     const [subject, setSubject] = useState('physical');
@@ -74,7 +74,7 @@ const Form = () => {
     );
 };
 
-export default Form;
+export default FormNumberTemlate;
 
 
 // import React, { useCallback, useEffect, useState } from 'react';
