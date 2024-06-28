@@ -18,29 +18,15 @@ const FormNumberTemlate = () => {
             timeToEnd: timeToEnd ? 0 : dateTime,
             subject,
             what
-        }
+        };
         tg.sendData(JSON.stringify(data));
     }, [number, timeToEnd, dateTime, subject, what]);
-
-
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
-        return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-        }
-    }, [onSendData])
-
-    useEffect(() => {
-        tg.MainButton.setParams({
-            text: 'Отправить данные'
-        });
-    }, [])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
         return () => {
             tg.offEvent('mainButtonClicked', onSendData);
-        }
+        };
     }, [onSendData]);
 
     useEffect(() => {
@@ -59,34 +45,34 @@ const FormNumberTemlate = () => {
 
     const onChangeNumber = (e) => {
         setNumber(e.target.value);
-    }
+    };
 
     const onChangeTimeToEnd = (e) => {
         setTimeToEnd(e.target.checked);
-    }
+    };
 
     const onChangeDateTime = (e) => {
         setDateTime(e.target.value);
-    }
+    };
 
     const onChangeSubject = (e) => {
-        setSubject(e.target.value);
-    }
-
-    const getNumberMask = () => {
-        if (subject === 1) {
-            return 'a999aa999';
-        } else if (subject === 2) {
-            return '9999aa99';
-        }
-        return '';
-    }
+        setSubject(Number(e.target.value));
+    };
 
     const maskDefinitions = {
         'a': {
             validator: /[АВЕКМНОРСТУХавекмнорстух]/,
             casing: 'upper'
         }
+    };
+
+    const getNumberMask = () => {
+        if (subject === 1) { // Автомобиль
+            return 'a999aa999';
+        } else if (subject === 2) { // Мотоцикл
+            return '9999aa99';
+        }
+        return '';
     };
 
     return (
