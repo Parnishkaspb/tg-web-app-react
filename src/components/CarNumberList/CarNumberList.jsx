@@ -3,7 +3,7 @@ import './CarNumberList.css';
 import CarNumberItem from '../CarNumberItem/CarNumberItem';
 import { useTelegram } from '../../hooks/useTelegram';
 import { useNavigate } from 'react-router-dom';
-import Button from '../buttonsss/Button';
+import Button from '../Button/Button';
 
 const numberTemplates = [
     { id: 1, number: 'o000oo00', type: 1, datetime: 0 },
