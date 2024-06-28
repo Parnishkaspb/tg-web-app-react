@@ -20,20 +20,20 @@ const FormNumberTemlate = () => {
             what
         };
         tg.sendData(JSON.stringify(data));
-    }, [number, timeToEnd, dateTime, subject, what, tg]);
+    }, [number, timeToEnd, dateTime, subject, what]);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
         return () => {
             tg.offEvent('mainButtonClicked', onSendData);
         };
-    }, [onSendData, tg]);
+    }, [onSendData]);
 
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Отправить данные'
         });
-    }, [tg.MainButton]);
+    }, []);
 
     useEffect(() => {
         if (!number || (!timeToEnd && !dateTime)) {
@@ -41,7 +41,7 @@ const FormNumberTemlate = () => {
         } else {
             tg.MainButton.show();
         }
-    }, [number, timeToEnd, dateTime, tg.MainButton]);
+    }, [number, timeToEnd, dateTime]);
 
     const onChangeNumber = (e) => {
         setNumber(e.target.value);
