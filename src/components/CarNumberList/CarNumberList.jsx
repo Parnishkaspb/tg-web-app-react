@@ -3,6 +3,7 @@ import './CarNumberList.css';
 import CarNumberItem from '../CarNumberItem/CarNumberItem';
 import { useTelegram } from '../../hooks/useTelegram';
 import { useNavigate } from 'react-router-dom';
+import Button from '../buttonsss/Button';
 
 const numberTemplates = [
     { id: 1, number: 'o000oo00', type: 1, datetime: 0 },
@@ -38,9 +39,10 @@ const CarNumberList = () => {
                 })}
             </div>
             <div>
-                <button onClick={() => navigate('/add_new_number_teplate')} className="button">
+                <Button onClick={() => navigate('/add_new_number_teplate')} className="button1"> Выписать пропуск</Button>
+                {/* <button onClick={() => navigate('/add_new_number_teplate')} >
                     Выписать пропуск
-                </button>
+                </button> */}
             </div>
         </>
     );

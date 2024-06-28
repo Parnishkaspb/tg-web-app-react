@@ -9,7 +9,6 @@
     margin-bottom: 15px;
 }
 
-.button {
+.button1 {
     width: 100%;
-    background: var(--tg-theme-button-color);
 }
