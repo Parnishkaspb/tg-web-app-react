@@ -7,19 +7,8 @@ const FormNumberTemplate = () => {
     const [number, setNumber] = useState('');
     const [timeToEnd, setTimeToEnd] = useState(false);
     const [dateTime, setDateTime] = useState('');
-    const [subject, setSubject] = useState('car');
+    const [subject, setSubject] = useState(1);
     const { tg } = useTelegram();
-
-    const carNumberRegex = /^[АВЕКМНОРСТУХ]\d{3}[АВЕКМНОРСТУХ]{2}\d{2,3}$/;
-    const motoNumberRegex = /^\d{4}[АВЕКМНОРСТУХ]{2}\d{2}$/;
-
-    function validateCarNumber(carNumber) {
-        return carNumberRegex.test(carNumber);
-    }
-
-    function validateMotoNumber(motoNumber) {
-        return motoNumberRegex.test(motoNumber);
-    }
 
     const onSendData = useCallback(() => {
         const data = {
@@ -28,20 +17,20 @@ const FormNumberTemplate = () => {
             subject
         }
         tg.sendData(JSON.stringify(data));
-    }, [number, timeToEnd, dateTime, subject, tg]);
+    }, [number, timeToEnd, dateTime, subject]);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
         return () => {
             tg.offEvent('mainButtonClicked', onSendData);
         }
-    }, [onSendData, tg]);
+    }, [onSendData]);
 
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Отправить данные'
         });
-    }, [tg]);
+    }, []);
 
     useEffect(() => {
         if (!number || (!timeToEnd && !dateTime)) {
@@ -49,7 +38,7 @@ const FormNumberTemplate = () => {
         } else {
             tg.MainButton.show();
         }
-    }, [number, timeToEnd, dateTime, tg]);
+    }, [number, timeToEnd, dateTime]);
 
     const onChangeNumber = (e) => {
         setNumber(e.target.value);
@@ -87,8 +76,8 @@ const FormNumberTemplate = () => {
         <div className={'form'}>
             <h3>Выписать пропуск</h3>
             <select value={subject} onChange={onChangeSubject} className={'select'}>
-                <option value={'car'}>Автомобиль</option>
-                <option value={'moto'}>Мотоцикл</option>
+                <option value={1}>Автомобиль</option>
+                <option value={2}>Мотоцикл</option>
             </select>
             <InputMask
                 mask={getNumberMask()}
