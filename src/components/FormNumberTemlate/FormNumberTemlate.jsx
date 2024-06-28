@@ -97,17 +97,20 @@ const FormNumberTemplate = () => {
                 />
                 Бессрочно
             </label>
-            <label>
-                Выберите дату и время:
-                {!timeToEnd && (
+
+
+            {!timeToEnd && (
+                <label>
+                    Выберите дату и время:
                     <input
                         className={'input'}
                         type='datetime-local'
                         value={dateTime}
                         onChange={onChangeDateTime}
                     />
-                )}
-            </label>
+                </label>
+            )}
+
         </div>
     );
 };
