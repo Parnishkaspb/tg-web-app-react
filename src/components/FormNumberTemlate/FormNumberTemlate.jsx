@@ -74,9 +74,9 @@ const FormNumberTemlate = () => {
     }
 
     const getNumberMask = () => {
-        if (subject === 'car') {
+        if (subject === 1) {
             return 'a999aa999';
-        } else if (subject === 'moto') {
+        } else if (subject === 2) {
             return '9999aa99';
         }
         return '';
@@ -131,21 +131,3 @@ const FormNumberTemlate = () => {
 };
 
 export default FormNumberTemlate;
-
-
-// import React, { useCallback, useEffect, useState } from 'react';
-// import './FormNumberTemlate.css';
-// import { useTelegram } from '../../hooks/useTelegram';
-// import InputMask from 'react-input-mask';
-
-// const FormNumberTemplate = () => {
-
-
-
-
-
-
-
-// };
-
-// export default FormNumberTemplate;
