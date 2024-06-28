@@ -7,6 +7,17 @@ const FormNumberTemlate = () => {
     const [subject, setSubject] = useState('physical');
     const { tg } = useTelegram();
 
+
+
+    const [number, setNumber] = useState('');
+    const [timeToEnd, setTimeToEnd] = useState(false);
+    const [dateTime, setDateTime] = useState('');
+    // const [subject, setSubject] = useState(1);
+    // const { tg } = useTelegram();
+    const what = 'new_templates';
+
+
+
     const onSendData = useCallback(() => {
         const data = {
             country,
@@ -83,12 +94,7 @@ export default FormNumberTemlate;
 // import InputMask from 'react-input-mask';
 
 // const FormNumberTemplate = () => {
-//     const [number, setNumber] = useState('');
-//     const [timeToEnd, setTimeToEnd] = useState(false);
-//     const [dateTime, setDateTime] = useState('');
-//     const [subject, setSubject] = useState(1);
-//     const { tg } = useTelegram();
-//     const what = 'new_templates';
+
 
 //     const onSendData = useCallback(() => {
 //         const data = {
