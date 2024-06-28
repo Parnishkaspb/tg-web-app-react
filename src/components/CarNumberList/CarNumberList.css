@@ -8,3 +8,8 @@
     margin-right: 15px;
     margin-bottom: 15px;
 }
+
+.button {
+    width: 100%;
+    background: var(--tg-theme-button-color);
+}

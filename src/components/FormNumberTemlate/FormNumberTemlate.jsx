@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './FormNumberTemlate.css';
 import { useTelegram } from '../../hooks/useTelegram';
+import InputMask from 'react-input-mask';
 
 const FormNumberTemplate = () => {
     const [number, setNumber] = useState('');
@@ -9,10 +10,21 @@ const FormNumberTemplate = () => {
     const [subject, setSubject] = useState('car');
     const { tg } = useTelegram();
 
+    const carNumberRegex = /^[АВЕКМНОРСТУХ]\d{3}[АВЕКМНОРСТУХ]{2}\d{2,3}$/;
+    const motoNumberRegex = /^\d{4}[АВЕКМНОРСТУХ]{2}\d{2}$/;
+
+    function validateCarNumber(carNumber) {
+        return carNumberRegex.test(carNumber);
+    }
+
+    function validateMotoNumber(motoNumber) {
+        return motoNumberRegex.test(motoNumber);
+    }
+
     const onSendData = useCallback(() => {
         const data = {
             number,
-            timeToEnd: timeToEnd ? 'Бессрочно' : dateTime,
+            timeToEnd: timeToEnd ? 0 : dateTime,
             subject
         }
         tg.sendData(JSON.stringify(data));
@@ -23,7 +35,7 @@ const FormNumberTemplate = () => {
         return () => {
             tg.offEvent('mainButtonClicked', onSendData);
         }
-    }, [onSendData]);
+    }, [onSendData, tg]);
 
     useEffect(() => {
         tg.MainButton.setParams({
@@ -55,6 +67,22 @@ const FormNumberTemplate = () => {
         setSubject(e.target.value);
     }
 
+    const getNumberMask = () => {
+        if (subject === 'car') {
+            return 'a999aa999';
+        } else if (subject === 'moto') {
+            return '9999aa99';
+        }
+        return '';
+    }
+
+    const maskDefinitions = {
+        'a': {
+            validator: /[АВЕКМНОРСТУХавекмнорстух]/,
+            casing: 'upper'
+        }
+    };
+
     return (
         <div className={'form'}>
             <h3>Выписать пропуск</h3>
@@ -62,13 +90,15 @@ const FormNumberTemplate = () => {
                 <option value={'car'}>Автомобиль</option>
                 <option value={'moto'}>Мотоцикл</option>
             </select>
-            <input
-                className={'input'}
-                type='text'
-                placeholder={'Номер ТС'}
+            <InputMask
+                mask={getNumberMask()}
                 value={number}
                 onChange={onChangeNumber}
-            />
+                maskChar={null}
+                definitions={maskDefinitions}
+            >
+                {(inputProps) => <input {...inputProps} className={'input'} placeholder={'Номер ТС'} />}
+            </InputMask>
             <label>
                 <input
                     className={'input'}

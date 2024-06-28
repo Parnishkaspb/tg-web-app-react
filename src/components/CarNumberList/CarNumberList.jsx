@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import './CarNumberList.css';
 import CarNumberItem from '../CarNumberItem/CarNumberItem';
 import { useTelegram } from '../../hooks/useTelegram';
+import { useNavigate } from 'react-router-dom';
 
 const numberTemplates = [
     { id: 1, number: 'o000oo00', type: 1, datetime: 0 },
@@ -13,7 +14,7 @@ const numberTemplates = [
 
 
 const CarNumberList = () => {
-
+    const navigate = useNavigate();
     const onAdd = (numberTemplate) => {
         return 1;
     }
@@ -24,17 +25,24 @@ const CarNumberList = () => {
 
 
     return (
-        <div className={'list'}>
-            {numberTemplates.map(item => {
-                return (
-                    <CarNumberItem
-                        numberTemplate={item}
-                        onAdd={onAdd}
-                        onDel={onDel}
-                        className={'item'} />
-                );
-            })}
-        </div>
+        <>
+            <div className={'list'}>
+                {numberTemplates.map(item => {
+                    return (
+                        <CarNumberItem
+                            numberTemplate={item}
+                            onAdd={onAdd}
+                            onDel={onDel}
+                            className={'item'} />
+                    );
+                })}
+            </div>
+            <div>
+                <button onClick={() => navigate('/add_new_number_teplate')} className="button">
+                    Выписать пропуск
+                </button>
+            </div>
+        </>
     );
 };
 
