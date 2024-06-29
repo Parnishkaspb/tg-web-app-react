@@ -20,21 +20,15 @@ const FormNumberTemlate = () => {
             what,
             queryId
         };
-        fetch('https://45.89.188.119:8000/data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    }, [number, timeToEnd, dateTime, subject, what]);
+        // fetch('https://45.89.188.119:8000/data', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(data)
+        // })
+        tg.sendData(JSON.stringify(data));
+    }, [number, timeToEnd, dateTime, subject, what, queryId]);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
