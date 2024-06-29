@@ -20,7 +20,7 @@ const FormNumberTemlate = () => {
             what,
             queryId
         };
-        fetch('https://localhost:8000/data', {
+        fetch('https://45.89.188.119:8000/data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
