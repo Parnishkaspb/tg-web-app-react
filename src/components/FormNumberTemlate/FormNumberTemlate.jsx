@@ -4,7 +4,7 @@ import { useTelegram } from '../../hooks/useTelegram';
 import InputMask from 'react-input-mask';
 
 const FormNumberTemlate = () => {
-    const { tg } = useTelegram();
+    const { tg, queryId } = useTelegram();
     const [number, setNumber] = useState('');
     const [timeToEnd, setTimeToEnd] = useState(false);
     const [dateTime, setDateTime] = useState('');
@@ -17,9 +17,23 @@ const FormNumberTemlate = () => {
             number,
             timeToEnd: timeToEnd ? 0 : dateTime,
             subject,
-            what
+            what,
+            queryId
         };
-        tg.sendData(JSON.stringify(data));
+        fetch('https://localhost:8000/data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }, [number, timeToEnd, dateTime, subject, what]);
 
     useEffect(() => {
