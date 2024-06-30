@@ -19,15 +19,7 @@ const FormNumberTemplate = () => {
             queryId,
             timeToEnd: timeToEnd ? 0 : dateTime,
         };
-        console.log('Sending data:', data);  // Логирование данных перед отправкой
-        tg.sendData(JSON.stringify(data))
-            .then(() => {
-                alert('Data sent successfully');
-            })
-            .catch((error) => {
-                console.error('Error sending data:', error);  // Обработка ошибок
-                alert('Failed to send data', error);
-            });
+        tg.sendData(JSON.stringify(data));
     }, [number, timeToEnd, dateTime, queryId]);
 
     useEffect(() => {
