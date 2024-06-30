@@ -140,7 +140,7 @@ const FormNumberTemlate = () => {
                     />
                 </label>
             )}
-            <Button onClick={onSendData}> Отправить данные </Button>
+            <Button onClick={onSendData}> Отправить данные! QueryID: {queryId} </Button>
         </div>
     );
 };
