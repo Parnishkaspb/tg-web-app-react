@@ -13,15 +13,20 @@ const FormNumberTemlate = () => {
     const what = 'new_templates';
 
     const onSendData = useCallback(async () => {
+        // const data = {
+        //     number,
+        //     timeToEnd: timeToEnd ? 0 : dateTime,
+        //     subject,
+        //     what,
+        //     queryId
+        // };
+
         const data = {
             number,
-            timeToEnd: timeToEnd ? 0 : dateTime,
-            subject,
-            what,
             queryId
         };
 
-        await fetch('https://45.89.188.119:8000/data', {
+        await fetch('http://45.89.188.119:8000/data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
