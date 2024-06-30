@@ -24,7 +24,8 @@ const FormNumberTemlate = () => {
 
         const data = {
             number,
-            queryId
+            queryId,
+            timeToEnd
         };
 
         await fetch('http://45.89.188.119:8000/data', {
