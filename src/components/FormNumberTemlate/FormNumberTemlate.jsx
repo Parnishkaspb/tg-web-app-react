@@ -14,28 +14,20 @@ const FormNumberTemlate = () => {
     const what = 'new_templates';
 
     const onSendData = useCallback(async () => {
-        // const data = {
-        //     number,
-        //     timeToEnd: timeToEnd ? 0 : dateTime,
-        //     subject,
-        //     what,
-        //     queryId
-        // };
-
         const data = {
             number,
             queryId,
             timeToEnd: timeToEnd ? 0 : dateTime,
         };
 
-        await fetch('http://45.89.188.119:8000/data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-
+        // fetch('http://45.89.188.119:8000/data', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(data)
+        // });
+        tg.sendData(JSON.stringify(data));
         alert('Hello');
     }, [number, timeToEnd, dateTime, subject, what, queryId]);
 
