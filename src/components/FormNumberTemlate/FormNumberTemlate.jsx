@@ -39,7 +39,7 @@ const FormNumberTemlate = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Отправить данные'
+            text: 'Выписать пропуск'
         });
     }, []);
 
