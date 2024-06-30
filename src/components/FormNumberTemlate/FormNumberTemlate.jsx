@@ -12,7 +12,7 @@ const FormNumberTemlate = () => {
 
     const what = 'new_templates';
 
-    const onSendData = useCallback(() => {
+    const onSendData = useCallback(async () => {
         const data = {
             number,
             timeToEnd: timeToEnd ? 0 : dateTime,
@@ -20,15 +20,29 @@ const FormNumberTemlate = () => {
             what,
             queryId
         };
-        // fetch('https://45.89.188.119:8000/data', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // })
-        tg.sendData(JSON.stringify(data));
+
+        await fetch('https://45.89.188.119:8000/data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                tg.sendData(JSON.stringify(data));
+            })
+            .catch((error) => {
+                console.error('There was a problem with your fetch operation:', error);
+            });
     }, [number, timeToEnd, dateTime, subject, what, queryId]);
+
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
