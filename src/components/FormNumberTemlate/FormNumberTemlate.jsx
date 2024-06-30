@@ -25,7 +25,7 @@ const FormNumberTemlate = () => {
         const data = {
             number,
             queryId,
-            timeToEnd
+            timeToEnd: timeToEnd ? 0 : dateTime,
         };
 
         await fetch('http://45.89.188.119:8000/data', {
@@ -48,6 +48,7 @@ const FormNumberTemlate = () => {
             .catch((error) => {
                 console.error('There was a problem with your fetch operation:', error);
             });
+        alert('Hello');
     }, [number, timeToEnd, dateTime, subject, what, queryId]);
 
 
