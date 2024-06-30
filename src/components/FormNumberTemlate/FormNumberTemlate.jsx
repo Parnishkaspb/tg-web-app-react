@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './FormNumberTemlate.css';
 import { useTelegram } from '../../hooks/useTelegram';
 import InputMask from 'react-input-mask';
+import Button from '../Button/Button';
 
 const FormNumberTemlate = () => {
     const { tg, queryId } = useTelegram();
@@ -139,6 +140,7 @@ const FormNumberTemlate = () => {
                     />
                 </label>
             )}
+            <Button onClick={onSendData}> Отправить данные </Button>
         </div>
     );
 };
