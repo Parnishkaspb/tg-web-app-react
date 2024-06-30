@@ -35,19 +35,7 @@ const FormNumberTemlate = () => {
             },
             body: JSON.stringify(data)
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Success:', data);
-                tg.sendData(JSON.stringify(data));
-            })
-            .catch((error) => {
-                console.error('There was a problem with your fetch operation:', error);
-            });
+
         alert('Hello');
     }, [number, timeToEnd, dateTime, subject, what, queryId]);
 
