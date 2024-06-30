@@ -4,7 +4,7 @@ import { useTelegram } from '../../hooks/useTelegram';
 import InputMask from 'react-input-mask';
 import Button from '../Button/Button';
 
-const FormNumberTemlate = () => {
+const FormNumberTemplate = () => {
     const { tg, queryId } = useTelegram();
     const [number, setNumber] = useState('');
     const [timeToEnd, setTimeToEnd] = useState(false);
@@ -13,24 +13,22 @@ const FormNumberTemlate = () => {
 
     const what = 'new_templates';
 
-    const onSendData = useCallback(async () => {
+    const onSendData = useCallback(() => {
         const data = {
             number,
             queryId,
             timeToEnd: timeToEnd ? 0 : dateTime,
         };
-
-        // fetch('http://45.89.188.119:8000/data', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // });
-        tg.sendData(JSON.stringify(data));
-        alert('Hello');
-    }, [number, timeToEnd, dateTime, subject, what, queryId]);
-
+        console.log('Sending data:', data);  // Логирование данных перед отправкой
+        tg.sendData(JSON.stringify(data))
+            .then(() => {
+                alert('Data sent successfully');
+            })
+            .catch((error) => {
+                console.error('Error sending data:', error);  // Обработка ошибок
+                alert('Failed to send data', error);
+            });
+    }, [number, timeToEnd, dateTime, queryId]);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
@@ -127,4 +125,13 @@ const FormNumberTemlate = () => {
     );
 };
 
-export default FormNumberTemlate;
+export default FormNumberTemplate;
+
+
+// fetch('http://45.89.188.119:8000/data', {
+//     method: 'POST',
+//     headers: {
+//         'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(data)
+// });
