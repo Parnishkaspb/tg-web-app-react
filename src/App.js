@@ -25,6 +25,8 @@ function App() {
         <Route path={'form'} element={<Form />} />
         <Route path={'all_number_template'} element={<CarNumberList />} />
         <Route path={'add_new_number_teplate'} element={<FormNumberTemlate />} />
+
+        <Route path={'edit_number_teplate'} element={<FormNumberTemlate />} />
       </Routes>
     </div>
   );
